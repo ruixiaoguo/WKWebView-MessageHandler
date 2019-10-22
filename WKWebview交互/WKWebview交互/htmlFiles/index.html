@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>JS交互</title>
+        
+        <style>
+            
+            body {
+                font-size:30px;
+                text-align:center;
+            }
+        
+            * {
+                margin: 50px;
+                padding: 0;
+            }
+        
+            h1{
+                color: red;
+            }
+        
+            button{
+                width: 350px;
+                height: 90px;
+                font-size: 35px;
+            }
+        
+    </style>
+        
+    </head>
+    
+    <body>
+        
+        <h1>WKWebview与Native交互</h1>
+        <h2></h2>
+        <button onclick="alertAction()">点击弹框</button>
+        <button onclick="confirmAction()">点击多选弹框</button>
+        <button onclick="buttonAction()">点击向iOS传数据</button>
+        
+        
+    </body>
+    
+    <script>
+        
+        
+    
+        function navButtonAction(name,age){
+            var dic = {name:name,age:age};
+            return dic;
+        }
+        
+        function alertAction(){
+            alert("监听Alert弹窗");
+        }
+    
+        function confirmAction(){
+            confirm("监听confirm弹窗");
+        }
+    
+        function buttonAction(){
+            try{
+                <!--js向ios传递数据-->
+                window.webkit.messageHandlers.showMessage.postMessage("来自js传递过来的数据");
+            }catch (e){
+                
+            }
+        }
+    
+        </script>
+    
+</html>
